@@ -23,11 +23,13 @@ y = np.array([1,0])
 # Total size for each "step":
 H = 1e-4
 
-max_time_steps = 500000
-for t in range( max_time_steps ):
+#Initial time:
+t = 0
+
+while t < 50:
 
     # Integrate between y and y+H:
-    y = RungeKuttaFehlberg78(f, t, y, H, 1e-14)
+    t, y = RungeKuttaFehlberg78(f, t, y, H, 1e-14)
 
     # Uncomment the next line to print the information of each point on screen:
     print(t, " | ", y )

@@ -68,7 +68,7 @@ def RungeKuttaFehlberg78(f, x0, y0, H, TOL):
         elif x + h > b:
             h = b - x
 
-    return y
+    return x, y
 
 
 
@@ -134,4 +134,4 @@ def RungeKuttaFehlberg45(f, x0, y0, H, TOL):
         elif x + h > b:
             h = b - x
 
-    return y
+    return x, y
