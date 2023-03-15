@@ -120,13 +120,14 @@ def optimize_model():
     torch.nn.utils.clip_grad_value_(policy_net.parameters(), 100)
     optimizer.step()
 
-
-num_episodes = 100
+fitxer = open("results_train.txt", "w")
+num_episodes = 500
 
 for i_episode in range(num_episodes):
     # Initialize the environment and get it's state
-    H = 1e-3
-    state, info = env.reset(H)
+    H = 1e-2
+    state, info = env.reset(H, tmax = 120)
+    ini_state = state
     total_reward = 0
     state = torch.tensor(state, dtype=torch.float32, device=device).unsqueeze(0)
     for t in count():
@@ -160,7 +161,25 @@ for i_episode in range(num_episodes):
         target_net.load_state_dict(target_net_state_dict)
 
         if done:
-            print("-----Episode", i_episode, "| Att: ", env.w, "| Avg reward =", total_reward / (20.0 / H))
+            print("---Ep.", i_episode, "| m:", env.mass, "| In. Att: ", ini_state, "| Fin. Att: ", env.w, "| Avg. Rew: ", total_reward / t, "| t: ", env.t)#, "| Avg reward =", total_reward / (20.0 / H))
+            fitxer.write(str(i_episode) + ";" + str(ini_state[0]) + ";" + str(ini_state[1]) + ";" + str(ini_state[2]) + ";" + str(env.w[0]) + ";" + str(env.w[1]) + ";" + str(env.w[2]) + ";" + str(total_reward / t) + ";" + str(env.t) + "\n")
             break
 
 print('Complete')
+fitxer.close()
+
+print("\n\n----------------\nTesting phase.")
+for i_episode in range(25):
+    H = 1e-2
+    state, info = env.reset(H, tmax = 120)
+    ini_state = state
+    state = torch.tensor(state, dtype=torch.float32, device=device).unsqueeze(0)
+    for t in count():
+        action = select_action(state)
+        observation, _, terminated, truncated = env.step(action.item())
+
+        state = torch.tensor(observation, dtype=torch.float32, device=device).unsqueeze(0)
+
+        if terminated or truncated:
+            print("---> Test Ep.", i_episode, "| In. Att: ", ini_state, "| Fin. Att: ", env.w, "| t: ", env.t)
+            break
