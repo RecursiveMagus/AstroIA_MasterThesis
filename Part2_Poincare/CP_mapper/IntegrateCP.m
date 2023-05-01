@@ -8,17 +8,18 @@ K = 0.0015749;
 h = -1.7; % Energy level
 
 % Integration constants, options and Poincare Section:
-TF=100;
+TF=10;
 tRange = [0:0.001:TF];
 options = odeset('AbsTol',1e-12,'RelTol',1e-12, 'Events', @orbitEvents);
 
 % Array to store the intersection points with the Poincare Section:
-PS = [];
+%PS = [];
 
 
 
-
-for x0 = -0.63:0.001:-0.35
+%-0.63
+%-0.36
+for x0 = -0.5011:0.0001:-0.36
 
     % We will always ignore x0 = 0, since it's a singularity
     if x0 == 0
@@ -39,14 +40,16 @@ for x0 = -0.63:0.001:-0.35
     F0 = [x0,0,0,y_dot_0];
     Fi = F0;
 
-    % Try to find 100 intersections with the defined Poincare Section:
-    for i=1:2000
+    % Try to find 5000 intersections with the defined Poincare Section:
+    for i=1:5000
         
-        [t, F] = ode45(@CP_field, tRange, F0, options);
+        [t, F] = ode78(@CP_field, tRange, F0, options);
     
         Ff = F(end,:);
         if   Ff(4) < 0 && abs(Ff(3)) < 1e-10
-            PS = [PS; Fi, Ff];
+            %PS = [PS; Fi, Ff];
+            Data = [Fi, Ff];
+            dlmwrite('PS.csv',Data,'delimiter',',','-append');
             Fi = Ff;
         end
         F0 = Ff;
@@ -54,6 +57,7 @@ for x0 = -0.63:0.001:-0.35
     end
 end
 
-writematrix(PS,'PS.csv') 
+%writematrix(PS,'PS.csv') 
 
-plot(PS(:,5), PS(:,6), '.','MarkerSize',0.5);
+% We can also show the resulting image, if we want
+% plot(PS(:,5), PS(:,6), '.','MarkerSize',0.5);
