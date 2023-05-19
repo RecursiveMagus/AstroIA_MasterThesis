@@ -1,4 +1,4 @@
-function PlotSimulationEpisode(experience, index)
+function PlotSimulationEpisode(experience, index, zoom)
 
     state_history = experience(index).Observation.SatelliteEnviromentStates.Data;
     s = size(state_history);
@@ -20,42 +20,45 @@ function PlotSimulationEpisode(experience, index)
         b = [b;rad2deg(d)];
     end
 
+    x0=10;
+    y0=10;
+    width=1400;
+    height=300 * 3 +50;
+    set(gcf,'position',[x0,y0,width,height]);
+
     subplot(3,1,1);
-    plot(q1(:));
+    plot(q1(:), LineWidth=2);
     hold on;
-    plot(q2(:));
+    plot(q2(:), LineWidth=2);
     hold on;
-    plot(q3(:));
+    plot(q3(:), LineWidth=2);
     hold on;
-    plot(q4(:));
+    plot(q4(:), LineWidth=2);
     hold on;
     title('Quaternion');
-    xlim([0 3000])
+    xlim([zoom 3000])
+    xlabel('Time step');
+    ylabel('Quaternion');
+    legend({'q1','q2', 'q3','q4'},'Location','northeast');
 
     subplot(3,1,2);
-    plot(b(:));
+    plot(b(:), LineWidth=2);
     title('Attitude error (º)');
-    xlim([0 3000]);
+    xlim([zoom 3000]);
+    xlabel('Time step');
+    ylabel('Degrees (º)');
 
     subplot(3,1,3);
-    plot(10*w1(:));
+    plot(10*w1(:), LineWidth=2);
     hold on;
-    plot(10*w2(:));
+    plot(10*w2(:), LineWidth=2);
     hold on;
-    plot(10*w3(:));
+    plot(10*w3(:), LineWidth=2);
     title('Angular velocity (rad/s)');
-    xlim([0 3000]);
-
-    disp(" ");
-    disp('Max attitude error (in º) after time step 500 is:');
-    disp(max(b(500:end)));
-
-    disp('Max ang. vel. (in º/s) after time step 500 is:');
-    max_w1 = max(abs(w1));
-    max_w2 = max(abs(w2));
-    max_w3 = max(abs(w3));
-    max_omega = rad2deg(max([max_w1, max_w2, max_w3]));
-    disp(max_omega);
+    xlim([zoom 3000]);
+    xlabel('Time step');
+    ylabel('Ang. vel. (rad/s)');
+    legend({'X axis','Y axis', 'Z_axis'},'Location','northeast');
 
 
     
