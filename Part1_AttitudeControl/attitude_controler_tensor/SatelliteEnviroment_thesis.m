@@ -27,6 +27,10 @@ classdef SatelliteEnviroment_thesis < rl.env.MATLABEnvironment
         % Mass of the satellite:
         Mass = 5.0;
         Side = 1;
+        max_mass = 0;
+        max_side = 0;
+        min_mass = 0;
+        min_side = 0;
 
         % Inertia matrix and its inverse:
         I = zeros(3,3); 
@@ -112,7 +116,7 @@ classdef SatelliteEnviroment_thesis < rl.env.MATLABEnvironment
 
 
             % The returned observation is the current [q;w]:
-            Observation = [compact(this.q)'; this.omega/this.MAX_W; this.Mass / 1000; this.Side / 20];
+            Observation = [compact(this.q)'; this.omega/this.MAX_W; this.Mass / this.max_mass; this.Side / this.max_side];
 
             % Calculate the reward:
             Reward = GetReward(this);
@@ -163,8 +167,12 @@ classdef SatelliteEnviroment_thesis < rl.env.MATLABEnvironment
             this.t = 0;
 
             % Initialize a random Inertia Matrix:
-            this.Mass = (1000-20).*rand(1) + 20;
-            this.Side = (20-0.5).*rand(1) + 0.5;
+            this.max_mass = 25;
+            this.min_mass = 5;
+            this.max_side = 5;
+            this.min_side = 0.5;
+            this.Mass = (this.max_mass-this.min_mass).*rand(1) + this.min_mass;
+            this.Side = (this.max_side-this.min_side).*rand(1) + this.min_side;
             this.I = this.Mass * (this.Side * this.Side / 6) * [1,0,0;0,1,0;0,0,1]; 
 
             % Add a perturbation:
@@ -183,7 +191,7 @@ classdef SatelliteEnviroment_thesis < rl.env.MATLABEnvironment
             % Backup of the initial angular velocity and orientation:
             this.initial_omega = this.omega;
             this.initial_q = this.q;
-            InitialObservation = [compact(this.q)'; this.omega / this.MAX_W; this.Mass / 1000; this.Side / 20];
+            InitialObservation = [compact(this.q)'; this.omega / this.MAX_W; this.Mass / this.max_mass; this.Side / this.max_side];
 
         end
 

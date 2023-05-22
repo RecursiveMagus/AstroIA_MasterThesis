@@ -3,7 +3,7 @@ close all;
 clc;
 
 rng(42);
-PS = csvread("PS_train_1Eminus2.csv");
+PS = csvread("PS_train_limited.csv");
 rows = randperm(size(PS, 1));
 PS = PS(rows,:);
 %PS = rescale(PS, -1, 1);
@@ -108,21 +108,21 @@ opt = trainingOptions('adam', ...
     'LearnRateSchedule', 'piecewise',...
     'Shuffle','every-epoch',...
     'MaxEpochs',15, ...
-    'MiniBatchSize', 2048*2, ...
+    'MiniBatchSize', 64, ...
     'InitialLearnRate', 0.0001,...
     'Verbose', true)%,...
     %'ValidationData',{X_test, Y_test(:,2)});
     %    'Plots','training-progress',...
 
 
-net_x = trainNetwork(X_train, Y_train(:,1),layers_SMALL, opt);
-net_y = trainNetwork(X_train, Y_train(:,2),layers_BIG, opt);
-net_dx = trainNetwork(X_train, Y_train(:,3),layers_BIG, opt);
+net_x = trainNetwork(X_train, Y_train(:,1),layers, opt); %smll
+net_y = trainNetwork(X_train, Y_train(:,2),layers, opt); %big
+net_dx = trainNetwork(X_train, Y_train(:,3),layers, opt); %big
 
 
 
 
-PS = csvread("PS_small.csv");
+PS = csvread("PS_test_for_limited.csv");
 PS(:,7) = [];
 PS(:,3) = [];
 %PS = PS / 1.7;

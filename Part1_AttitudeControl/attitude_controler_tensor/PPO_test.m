@@ -26,7 +26,7 @@ numObs = prod(obsInfo.Dimension);
 % Create the critic network
 criticNetwork = [
     featureInputLayer(numObs)
-    fullyConnectedLayer(256)
+    fullyConnectedLayer(128)
     reluLayer
     fullyConnectedLayer(128)
     reluLayer
@@ -40,7 +40,7 @@ critic = rlValueFunction(criticNetwork, obsInfo, 'UseDevice','gpu');
 % Create the actor network
 actorNetwork = [
     featureInputLayer(numObs)
-    fullyConnectedLayer(256)
+    fullyConnectedLayer(128)
     reluLayer
     fullyConnectedLayer(128)
     reluLayer
