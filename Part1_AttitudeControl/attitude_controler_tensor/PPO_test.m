@@ -13,8 +13,8 @@ env = SatelliteEnviroment_thesis;
 
 % Simultation properties:
 env.Ts = 1e-1; % Time step
-env.Max_t = 60 * 5; % Max. simulation time
-env.max_episodes = 6000; % Max. training episodes
+env.Max_t = 600; % Max. simulation time
+env.max_episodes = 10000; % Max. training episodes
 
 % Retrieve information about the enviroment actions and states:
 actInfo = getActionInfo(env);
