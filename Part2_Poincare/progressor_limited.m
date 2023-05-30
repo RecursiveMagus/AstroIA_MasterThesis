@@ -121,7 +121,7 @@ rez = [x_pred, y_pred, dx_pred];
 disp("Final RMSE:")
 disp(rmse(rez, Y_test));
 disp(rmse(rez, Y_test, 'all'));
-plot(PS(:,1), PS(:,2), '.', MarkerSize = 0.1, Color = 'blue'); % Actual points
+plot(PS(:,4), PS(:,5), '.', MarkerSize = 0.1, Color = 'blue'); % Actual points
 hold on;
 plot(rez(:,1), rez(:,2), '.', MarkerSize = 0.1,  Color = 'red'); % Predictions
 
