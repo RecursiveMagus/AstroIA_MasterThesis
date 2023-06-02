@@ -31,15 +31,15 @@ The original idea was to work with the dynamical system of the restricted three 
 
 This repository is divided in the following directories:
 
-.
-├── Part1_AttitudeControl	# Programs of the 1st part of the thesis (attitude control)
-│   ├── Experiment_I        	# Angular velocity control
-│   ├── Experiment_IIa          # Full attitude control (microsatellite)
-│   ├── Experiment_IIb          # Full attitude control (cubesat)
-│   ├── Experiment_III          # Full attitude control + perturbations
-│   └── Extra         			# Extra experiment, not included in the thesis document.
-├── Part2_Poincare			# Programs for the 2nd part of the thesis (poincare map approx.)
-└── Thesis_document			# Contains the full thesis document
+    .
+    ├── Part1_AttitudeControl	# Programs of the 1st part of the thesis (attitude control)
+    │   ├── Experiment_I        	# Angular velocity control
+    │   ├── Experiment_IIa          # Full attitude control (microsatellite)
+    │   ├── Experiment_IIb          # Full attitude control (cubesat)
+    │   ├── Experiment_III          # Full attitude control + perturbations
+    │   └── Extra         			# Extra experiment, not included in the thesis document.
+    ├── Part2_Poincare			# Programs for the 2nd part of the thesis (poincare map approx.)
+    └── Thesis_document			# Contains the full thesis document
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
