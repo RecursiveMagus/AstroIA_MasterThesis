@@ -105,7 +105,7 @@ zero_offxd = predict(net_dx, zero) + y_dot_0;
 
 
 % Load and prepare the testing dataset:
-PS = csvread("PS_small.csv");
+PS = csvread("PS_testing.csv");
 PS(:,7) = [];
 PS(:,3) = [];
 Y_test = PS(:, 1:3);
