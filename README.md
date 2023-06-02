@@ -35,9 +35,9 @@ Simply download the scripts on your computer and run them using Matlab. Please, 
 
 Code has been developed using Matlab 2022b and 2023a. You will need the following toolboxes:
 
-* Deep Learning Toolbox
-* Reinforcement Learning Toolbox
-* Parallel Computing Toolbox
+* :brain: Deep Learning Toolbox
+* :robot: Reinforcement Learning Toolbox
+* :desktop_computer: Parallel Computing Toolbox
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
