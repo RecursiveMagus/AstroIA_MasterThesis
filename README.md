@@ -33,11 +33,11 @@ This repository is divided in the following directories:
 
     .
     ├── Part1_AttitudeControl	# Programs of the 1st part of the thesis (attitude control)
-    │   ├── Experiment_I        	# Angular velocity control
-    │   ├── Experiment_IIa          # Full attitude control (microsatellite)
-    │   ├── Experiment_IIb          # Full attitude control (cubesat)
-    │   ├── Experiment_III          # Full attitude control + perturbations
-    │   └── Extra         			# Extra experiment, not included in the thesis document.
+    │   ├── Experiment_I		# Angular velocity control
+    │   ├── Experiment_IIa		# Full attitude control (microsatellite)
+    │   ├── Experiment_IIb		# Full attitude control (cubesat)
+    │   ├── Experiment_III		# Full attitude control + perturbations
+    │   └── Extra				# Extra experiment, not included in the thesis document.
     ├── Part2_Poincare			# Programs for the 2nd part of the thesis (poincare map approx.)
     └── Thesis_document			# Contains the full thesis document
 
@@ -89,6 +89,8 @@ This work is licensed under a
 ## Contact
 
 Isaac de Palau (RecursiveMagus) - idepalau(funny-A-symbol)gmail(little-point)com
+
+If you have any questions regarding the programs or the contents of the thesis, do not hesitate to write me an email. I don't bite (usually).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
