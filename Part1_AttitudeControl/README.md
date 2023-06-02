@@ -31,7 +31,16 @@ Note that the script ``PPO_test.m`` also sets some of the parameters of the trai
 
 ### Replication
 
-To replicate the experiments from scratch (including the training process), you need to have ``PPO_test.m`` and ``SatelliteEnviroment.m`` in the same folder, and then execute the former. This will initiate the training process, which may take a few hours, or even a day. Go grab a coffee, and maybe watch a movie or two...
+To replicate the experiments from scratch (including the training process), you need to do the following:
+
+* Make sure you have a Matlab Parallel pool configured and enabled. I recommend using, at least, 4-6 workers.
+* Have ``PPO_test.m`` and ``SatelliteEnviroment.m`` in the same folder.
+* Run ``PPO_test.m``. This will initiate the training process, which may take a few hours, or even a day.
+* Go grab a coffe and maybe watch a movie or two. This will take a while.
+
+
+
+
 
 
 

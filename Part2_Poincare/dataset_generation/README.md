@@ -7,3 +7,6 @@ This folder stores the programs necessary to generate the training datasets.
 * ``IntegrateCP.m`` - Generates the equidistant dataset (``PS_train_equidistant.csv``).
 * ``IntegrateCP_limited.m`` - Generates the limited dataset (``PS_train_limited.csv``).
 * ``IntegrateCP_random.m`` - Generates the random dataset (``PS_train_random_42_500.csv``). Please note that the dataset name also includes the value of the random seed and the number of randomized points.
+
+
+If you want to generate a dataset, open Matlab and run ``IntegrateCP.m``, ``IntegrateCP_limited.m`` or ``IntegrateCP_random.m``.
