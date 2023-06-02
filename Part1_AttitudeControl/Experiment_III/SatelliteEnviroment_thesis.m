@@ -194,14 +194,11 @@ classdef SatelliteEnviroment_thesis < rl.env.MATLABEnvironment
     methods
         function reward = GetReward(this)
 
-            %rq = abs(dist(this.q, this.q_desired));%abs(q2) + abs(q3) + abs(q4);
             rw = abs(this.omega(1)) + abs(this.omega(2)) + abs(this.omega(3));
 
-            %reward = -rq -rw;
 
             compact_q = compact(this.q);%abs(dist(this.q, this.q_desired));
             rq = abs(compact_q(2)) + abs(compact_q(3)) + abs(compact_q(4));
-            %rw = norm(this.omega);
             reward = - 3 * rq - rw;
 
 

@@ -176,20 +176,6 @@ classdef SatelliteEnviroment < rl.env.MATLABEnvironment
         function rw = GetReward(this, w)
 
             % This function calculates the reward for the current state.
-            % Note that in most cases the reward is actually a penalty, and
-            % this should incentivize the agent to finish the episode
-            % quickly.
-
-            % We will also add a small incentive if the agent is getting
-            % closer to the terminal state, by dividing the penalty by 10.
-            %if norm(this.omega) < this.desired_precision * 10
-            %    rw = -norm(this.omega) / 10;
-
-            % Otherwise, the penalty is the euclidean norm of the current
-            % angular velocity.
-            %else
-            %    rw = -norm(this.omega);
-            %end
 
             rw = -abs(this.omega(1)) - abs(this.omega(2)) - abs(this.omega(3));
         end

@@ -1,16 +1,3 @@
-% Satellite angular velocity controller, first test.
-% This program uses the PPO algorithm to obtain an agent capable to
-% stabilize the angular velocity of a satellite.
-% This program should be run alongside the 'SatelliteEnviroment.m' script.
-%
-% Results: The control agent is able to stabilize a sperical satellite of
-% radius 0.29m and 5Kg of mass in less than 60 seconds with a precision
-% less than 1e-3 (or about 1e-2 in the worst initial conditions). The controller 
-% is trained with an initial perturbation between [-3, 3] rad/s on all 
-% three axis.
-% The training process lasts for 2500 episodes, although we should begin
-% to have an acceptable controller around iteration 350-400, and a suitable
-% controller around iteration 1700.
 
 % We begin by clearing everything:
 clear all;
