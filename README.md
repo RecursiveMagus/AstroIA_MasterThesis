@@ -39,7 +39,13 @@ This repository is divided in the following directories:
     │   ├── Experiment_III		# Full attitude control + perturbations
     │   └── Extra				# Extra experiment, not included in the thesis document.
     ├── Part2_Poincare			# Programs for the 2nd part of the thesis (poincare map approx.)
-    └── Thesis_document			# Contains the full thesis document
+    │   ├── dataset_generation		# Scripts to create the training datasets.
+    │   ├── datasets		# Training and testing datasets (.csv)
+	│	└── trained_networks	# Fully trained regressors/progressors + some figures.
+	│		├── equidistant		# Results obtained w/ equidistant dataset.
+	│		├── limited_section		# Results obtained w/ limited dataset.
+	│		└── random		# Results obtained w/ random dataset.
+    └── Thesis_document			# Contains the full thesis document in .pdf format.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
