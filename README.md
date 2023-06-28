@@ -46,6 +46,7 @@ This repository is divided in the following directories:
 	│		├── equidistant		# Results obtained w/ equidistant dataset.
 	│		├── limited_section	# Results obtained w/ limited dataset.
 	│		└── random		# Results obtained w/ random dataset.
+    ├── Extra_videos			# Videos showing the simulation results.
     └── Thesis_document			# Contains the full thesis document in .pdf format.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
